@@ -6,6 +6,7 @@ import { RouterModule } from "@angular/router";
 import { HttpClientModule} from '@angular/common/http';
 import { InvalidFormcontrolTextComponent } from "./invalid-formcontrol-text/invalid-formcontrol-text.component";
 import { CompleteTableComponent } from "./complete-table/complete-table.component";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 registerLocaleData(localeId, 'id');
 
 const core=[
@@ -14,6 +15,7 @@ const core=[
   FormsModule,
   ReactiveFormsModule,
   HttpClientModule,
+  FontAwesomeModule
 ]
 
 const frequentlyUsedComponent=[

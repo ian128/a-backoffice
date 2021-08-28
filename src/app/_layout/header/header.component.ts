@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { fontAwesome } from 'src/const/font-awesome';
 import { SidebarService } from '../../../shared/sidebar/sidebar.component';
 
 @Component({
@@ -7,7 +8,8 @@ import { SidebarService } from '../../../shared/sidebar/sidebar.component';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  fontAwesome = fontAwesome
+  
   constructor(
     private sidebarSvc: SidebarService
   ) { }

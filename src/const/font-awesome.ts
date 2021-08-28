@@ -9,6 +9,8 @@ export const fontAwesome={
     search: SolidSVG.faSearch,
     download: SolidSVG.faDownload,
     checked: SolidSVG.faCheckSquare,
+    menu: SolidSVG.faBars,
+    filter: SolidSVG.faFilter,
     chevron:{
         back: SolidSVG.faChevronLeft,
         forward: SolidSVG.faChevronRight

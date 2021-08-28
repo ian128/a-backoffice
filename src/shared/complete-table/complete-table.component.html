@@ -1,4 +1,4 @@
-<div class="container-fluid bg-white">
+<div class="bg-white">
     <div class="row d-flex align-items-center mb-1">
         <div class="col">
             <input class="form-control mb-0 search-icon" placeholder="Cari nama.."
@@ -6,9 +6,9 @@
             (keyup)="beginSearch()">
         </div>
         <div class="col-auto" *ngIf="!hideFilter">
-            <button class="btn "
+            <button class="btn text-primary"
             (click)="onClickF()">
-                <img class="icon mr-2" src="assets/images/icons/tune.png">Filter
+                <fa-icon [icon]="fontAwesome.filter"></fa-icon>
             </button>
         </div>
     </div>

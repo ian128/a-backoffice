@@ -12,10 +12,13 @@ $theme-colors:(
 );
 $spacer: 3rem;
 
+.btn{
+    border-radius: 0 !important;
+}
+
 .form-control{
     border: 1px solid #D3D3D3 !important;
-    border-radius: 3.75pt !important;
-    margin-bottom: 18pt;
+    border-radius: 0 !important;
 }
 
 .form-group{

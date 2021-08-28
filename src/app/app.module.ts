@@ -7,6 +7,7 @@ import { StartComponent } from './start/start.component';
 import { HeaderComponent } from './_layout/header/header.component';
 import { SidebarComponent } from '../shared/sidebar/sidebar.component';
 import { HotToastModule } from '@ngneat/hot-toast';
+import { SharedModule } from 'src/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HotToastModule } from '@ngneat/hot-toast';
       position: 'top-center',
       dismissible: true,
     }),
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
