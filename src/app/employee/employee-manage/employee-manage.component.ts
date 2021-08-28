@@ -1,8 +1,10 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Groups } from 'src/const/group.option';
+import { EmployeeService } from 'src/services/employee/employee.service';
 
 @Component({
   selector: 'app-employee-manage',
@@ -41,18 +43,35 @@ export class EmployeeManageComponent implements OnInit {
   })
   
   GroupOption = Groups
+  flags={
+    selectedID: null
+  }
 
   constructor(
     private toast: HotToastService,
-    private location: Location
-  ) { }
+    private location: Location,
+    private activatedRoute: ActivatedRoute,
+    private employeeSvc: EmployeeService,
+  ) { 
+    this.flags.selectedID = this.activatedRoute.snapshot.params.id
+  }
 
   back(){
     this.location.back()
   }
 
   ngOnInit(): void {
-
+    this.employeeSvc.getEmployeeDetail(this.flags.selectedID)
+    .then((res)=>{
+      console.log(res)
+      this.form.patchValue(res)
+    })
+    .catch(e=>{
+      this.toast.error(e)
+      setTimeout(()=>{
+        this.location.back()
+      },2000)
+    })
   }
 
   submit(){

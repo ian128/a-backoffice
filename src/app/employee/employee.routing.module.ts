@@ -12,6 +12,9 @@ const routes: Routes=[
     path: "new", component: EmployeeManageComponent
   },
   {
+    path: ":id/edit", component: EmployeeManageComponent
+  },
+  {
     path: ":id", component: EmployeeDetailComponent
   },
   {
