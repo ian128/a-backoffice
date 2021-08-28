@@ -1,0 +1,71 @@
+<div class="container-fluid bg-white">
+    <div class="row d-flex align-items-center mb-1">
+        <div class="col">
+            <input class="form-control mb-0 search-icon" placeholder="Cari nama.."
+            [(ngModel)]="searchTxt"
+            (keyup)="beginSearch()">
+        </div>
+        <div class="col-auto" *ngIf="!hideFilter">
+            <button class="btn "
+            (click)="onClickF()">
+                <img class="icon mr-2" src="assets/images/icons/tune.png">Filter
+            </button>
+        </div>
+    </div>
+    <div class="table-wrapper">
+        <table class="table"> 
+            <ng-content></ng-content>
+        </table>
+    </div>
+
+    <div class="row d-flex align-items-center" *ngIf="!hidePagination">
+        <div class="col">
+            {{ ((currentPage-1)*numberOfDisplayedItems)+1 }}-{{currentPage*numberOfDisplayedItems > totalItems ? totalItems : currentPage*numberOfDisplayedItems}} of {{totalItems}} list
+        </div>
+        <div class="col">
+            <div class="pagination d-flex align-items-center justify-content-end">
+                <div class="page-button-control"
+                (click)="pagination.backBatchPage()" [hidden]="!pagination.canBackBatchPage()">
+                    <fa-icon style="margin-left: 6pt; margin-top: 10pt;" [icon]="fontAwesome.chevron.back"></fa-icon>
+                </div>
+            
+                <!-- Show 5 pages per cycle-->
+                <div class="page-number"
+                [ngClass]="{
+                    'selected': currentPage == (i+pagination.offset)+1
+                }"
+                *ngFor="let x of [].constructor(maxPage) |
+                slice:pagination.offset:pagination.offset+pagination.cycle; let i=index"
+                (click)="selectNewPage(i+pagination.offset+1)">
+                    <div class="num">
+                        {{i+pagination.offset+1}}
+                    </div>
+                </div>
+                
+                <!-- Show trailing pagination-->
+                <div class="d-flex align-items-center" *ngIf="showTrailingPage">
+                    <div class="dots">
+                        ...
+                    </div>
+                    <div class="page-number">
+                        <div class="num" (click)="selectNewPage(maxPage)">
+                            {{maxPage}}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="page-button-control"
+                (click)="pagination.nextBatchPage()" [hidden]="!pagination.canNextBatchPage()">
+                    <fa-icon style="margin-left: 6pt; margin-top: 10pt;" [icon]="fontAwesome.chevron.forward"></fa-icon>
+                </div>
+                <div class="mt-2">
+                    <input class="form-control"
+                    #paginationinput
+                    [attr.value]="numberOfDisplayedItems"
+                    (change)="onChangePagelen(paginationinput)"
+                    style="width: 42pt;" type="number">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

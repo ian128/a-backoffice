@@ -1,4 +1,4 @@
-$h: 54pt;
+$h: 48pt;
 
 .headerSpacer{
     height: $h;
@@ -9,4 +9,6 @@ $h: 54pt;
     top: 0;
     height: $h;
     width: 100%;
+    background-color: white;
+    box-shadow: 0 0 12pt #000000A0;
 }

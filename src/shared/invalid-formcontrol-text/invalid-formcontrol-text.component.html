@@ -1,5 +1,5 @@
 <div>
-    <div [hidden]="!fControl.touched" class="error-msg mb-1" *ngFor="let item of fControl.errors | keyvalue">
+    <div [hidden]="!fControl.touched" class="error-msg" *ngFor="let item of fControl.errors | keyvalue">
         {{formMsg[item.key]}}
     </div>
 </div>

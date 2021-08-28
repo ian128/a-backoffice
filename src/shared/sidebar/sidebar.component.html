@@ -3,15 +3,19 @@
     'open':isSidebarOpened
 }">
     <div class="menu-content">
-        <div class="row px-2 py-1 d-flex align-items-center">
+        <div class="row px-1 py-1 d-flex align-items-center">
             <div class="col-auto">
-                <span style="font-size: 20pt; cursor: pointer;"
-                (click)="close()">
-                    &times;
-                </span>
+                <button class="btn">
+                    <span style="font-size: 20pt; cursor: pointer; color: white"
+                    (click)="close()">
+                        &times;
+                    </span>
+                </button>
             </div>
             <div class="col">
-                Menu
+                <span style="color: white; font-size: 18pt;">
+                    Menu
+                </span>
             </div>
         </div>
         <div class="menus">
@@ -19,6 +23,9 @@
             routerLink="/employee"
             routerLinkActive="active">
                 Employee
+            </div>
+            <div class="menus__menu">
+                Logout
             </div>
         </div>
     </div>

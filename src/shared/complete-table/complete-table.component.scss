@@ -1,0 +1,94 @@
+@import '../../../src/styles/color.scss';
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .page-button-control{
+        cursor: pointer;
+        padding-top: 2pt;
+        height: 20pt;
+        width: 20pt;
+        align-self: center;
+    }
+
+    .dots{
+        font-weight: 600;
+        color: $dark;
+    }
+    .page-number{
+        cursor: pointer;     
+        font-weight: 600;
+        margin: 4pt;
+
+        width: 24pt;
+        height: 24pt;
+        position: relative;
+        font-size: 10.5pt;
+        color: $dark;
+        .num{
+            display: flex;
+            margin:0;
+            padding-top: 4pt;
+            justify-content: center;
+            align-items: center;
+        }
+
+    }
+    .page-number.selected{
+        color: #0062FF !important;
+    }
+}
+
+.table-wrapper{
+    min-height: 40vh;
+    background-color: $light;
+    overflow-x: auto;
+    margin: 0 !important;
+}
+
+.table{
+    thead {
+        tr{
+            th{
+                cursor: pointer;
+                font-weight: 600;
+                color: white !important;
+                background-color: $secondary !important;
+                padding: 14.5pt 18pt 14.5pt 18pt !important;
+                font-size: 12px;
+                letter-spacing: 1.71px;
+                text-transform: uppercase;
+                
+                .sorting-icon{
+                    cursor: pointer;
+                    width: 12px;
+                    height: 8px;
+                }
+                
+            }
+        }
+    }
+    tbody {
+        tr{
+            td,th{
+                padding: 14.5pt 18pt 14.5pt 18pt !important;
+                font-weight: 300;
+                font-size: 12px;
+                line-height: 21px;
+                height: 32pt;
+                color: $dark;
+            }
+            td:nth-child(n+1){
+                border-top: 1px solid #92929D40;
+            }
+        }
+        tr.link{
+            cursor: pointer;
+        }
+        tr:hover{
+            background: transparentize($color: $dark, $amount: 0.5);
+        }
+    }
+}

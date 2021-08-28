@@ -12,12 +12,20 @@ $theme-colors:(
 );
 $spacer: 3rem;
 
-.form-group{
-    margin-bottom: 12pt;
+.form-control{
+    border: 1px solid #D3D3D3 !important;
+    border-radius: 3.75pt !important;
+    margin-bottom: 18pt;
 }
 
-@import "node_modules/bootstrap/scss/bootstrap";
-
+.form-group{
+    label{
+        font-weight: 500;
+    }
+    margin-bottom: 12pt;
+}
 .ng-touched.ng-invalid{
     @extend .is-invalid;
 }
+
+@import "node_modules/bootstrap/scss/bootstrap";

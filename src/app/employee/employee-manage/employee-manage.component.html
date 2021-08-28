@@ -1,1 +1,123 @@
-<p>employee-manage works!</p>
+<div class="row d-flex align-items-center">
+    <div class="col">
+        <h4>Add Employee</h4>
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-outline-danger me-2"
+        (click)="back()">
+            Cancel
+        </button>
+        <button class="btn btn-primary"
+        (click)="submit()">
+            Save
+        </button>
+    </div>
+</div>
+<form [formGroup]="form">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+            <div class="form-group">
+                <label>
+                    Username
+                </label>
+                <input class="form-control"
+                formControlName="username"/>
+                <form-errors [fControl]="form.controls.username"></form-errors>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+            <div class="form-group">
+                <label>
+                    First Name
+                </label>
+                <input class="form-control"
+                formControlName="firstName"/>
+                <form-errors [fControl]="form.controls.firstName"></form-errors>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+            <div class="form-group">
+                <label>
+                    Last Name
+                </label>
+                <input class="form-control"
+                formControlName="lastName"/>
+                <form-errors [fControl]="form.controls.lastName"></form-errors>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+            <div class="form-group">
+                <label>
+                    Birth Date
+                </label>
+                <input class="form-control"
+                type="date"
+                formControlName="birthDate"/>
+                <form-errors [fControl]="form.controls.birthDate"></form-errors>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+            <div class="form-group">
+                <label>
+                    Email
+                </label>
+                <input class="form-control"
+                formControlName="email"/>
+                <form-errors [fControl]="form.controls.email"></form-errors>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+            <div class="form-group">
+                <label>
+                    Basic Salary
+                </label>
+                <input class="form-control"
+                formControlName="basicSalary"/>
+                <form-errors [fControl]="form.controls.basicSalary"></form-errors>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+            <div class="form-group">
+                <label>
+                    Status
+                </label>
+                <input class="form-control"
+                formControlName="status"/>
+                <form-errors [fControl]="form.controls.status"></form-errors>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+            <div class="form-group">
+                <label>
+                    Group
+                </label>
+                <select class="form-control"
+                formControlName="group">
+                    <option [value]="null" disabled>Pilih..</option>
+                    <option *ngFor="let item of GroupOption"
+                    [value]="item.id">
+                        {{item.name}}
+                    </option>
+                </select>
+                <form-errors [fControl]="form.controls.group"></form-errors>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+            <div class="form-group">
+                <label>
+                    Description
+                </label>
+                <textarea class="form-control" rows="5"
+                formControlName="description">  
+                </textarea>
+                <form-errors [fControl]="form.controls.description"></form-errors>
+            </div>
+        </div>
+    </div>
+</form>

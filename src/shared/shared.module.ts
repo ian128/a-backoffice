@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { HttpClientModule} from '@angular/common/http';
 import { InvalidFormcontrolTextComponent } from "./invalid-formcontrol-text/invalid-formcontrol-text.component";
+import { CompleteTableComponent } from "./complete-table/complete-table.component";
 registerLocaleData(localeId, 'id');
 
 const core=[
@@ -16,7 +17,8 @@ const core=[
 ]
 
 const frequentlyUsedComponent=[
-  InvalidFormcontrolTextComponent
+  InvalidFormcontrolTextComponent,
+  CompleteTableComponent
 ]
 
 @NgModule({

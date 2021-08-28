@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "/src/styles/theme.scss";
 
-*{
+html, body{
     overflow-x: hidden;
-    box-sizing: border-box;
 }
