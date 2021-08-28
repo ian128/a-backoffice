@@ -12,13 +12,14 @@
             </button>
         </div>
     </div>
+    
     <div class="table-wrapper">
         <table class="table"> 
             <ng-content></ng-content>
         </table>
     </div>
 
-    <div class="row d-flex align-items-center" *ngIf="!hidePagination">
+    <div class="row d-flex align-items-center mt-1" *ngIf="!hidePagination">
         <div class="col">
             <div class="pagination d-flex align-items-center justify-content-end">
                 <div class="page-button-control"
@@ -55,7 +56,7 @@
                 (click)="pagination.nextBatchPage()" [hidden]="!pagination.canNextBatchPage()">
                     <fa-icon style="margin-left: 6pt; margin-top: 10pt;" [icon]="fontAwesome.chevron.forward"></fa-icon>
                 </div>
-                <div class="mt-2">
+                <div>
                     <input class="form-control"
                     [(ngModel)]="state.limit"
                     (ngModelChange)="onChangePageLength()"

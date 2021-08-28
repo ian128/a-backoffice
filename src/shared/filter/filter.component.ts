@@ -1,32 +1,32 @@
-import { Component, Inject, Injectable, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  selector: 'filter',
+  templateUrl: './filter.component.html',
+  styleUrls: ['./filter.component.scss']
 })
-export class SidebarComponent implements OnInit, OnDestroy {
+export class FilterComponent implements OnInit {
 
   constructor(
-    private sidebarSvc: SidebarService,
+    private filterSvc: FilterToggleService,
     private router: Router
   ) { }
 
   private sidebarSubject: Subscription
   private routerSubs: Subscription
 
-  public isSidebarOpened: Boolean
+  public isFilterOpened: Boolean
   
   ngOnInit(): void {
     this.routerSubs = this.router.events.subscribe((res)=>{
       if(res instanceof NavigationEnd){
-        this.sidebarSvc.closeSideBar()
+        this.filterSvc.closeFilter()
       }
     })
-    this.sidebarSubject = this.sidebarSvc.behaviorSubject.subscribe(res=>{
-      this.isSidebarOpened=res
+    this.sidebarSubject = this.filterSvc.behaviorSubject.subscribe(res=>{
+      this.isFilterOpened=res
     })
   }
 
@@ -36,22 +36,23 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   close(){
-    this.sidebarSvc.closeSideBar()
+    this.filterSvc.closeFilter()
   }
+
 }
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class SidebarService{
+export class FilterToggleService{
   behaviorSubject = new BehaviorSubject(false)
 
-  openSideBar(){
+  openFilter(){
     this.behaviorSubject.next(true)
   }
 
-  closeSideBar(){
+  closeFilter(){
     this.behaviorSubject.next(false)
   }
 }

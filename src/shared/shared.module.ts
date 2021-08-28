@@ -7,6 +7,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { InvalidFormcontrolTextComponent } from "./invalid-formcontrol-text/invalid-formcontrol-text.component";
 import { CompleteTableComponent } from "./complete-table/complete-table.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { FilterComponent } from "./filter/filter.component";
 registerLocaleData(localeId, 'id');
 
 const core=[
@@ -20,7 +21,8 @@ const core=[
 
 const frequentlyUsedComponent=[
   InvalidFormcontrolTextComponent,
-  CompleteTableComponent
+  CompleteTableComponent,
+  FilterComponent
 ]
 
 @NgModule({

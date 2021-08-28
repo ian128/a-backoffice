@@ -1,0 +1,25 @@
+<div class="filter-wrapper"
+[ngClass]="{
+    'open':isFilterOpened
+}">
+    <div class="menu-content">
+        <div class="row px-2 d-flex align-items-center">
+            <div class="col">
+                <span style="color: white; font-size: 18pt;">
+                    Filter
+                </span>
+            </div>
+            <div class="col-auto">
+                <button class="btn"
+                (click)="close()">
+                    <span style="font-size: 20pt; cursor: pointer; color: white">
+                        &times;
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="px-2">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

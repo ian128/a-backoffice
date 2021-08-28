@@ -11,6 +11,7 @@ export const fontAwesome={
     checked: SolidSVG.faCheckSquare,
     menu: SolidSVG.faBars,
     filter: SolidSVG.faFilter,
+    logout: SolidSVG.faSignOutAlt,
     chevron:{
         back: SolidSVG.faChevronLeft,
         forward: SolidSVG.faChevronRight

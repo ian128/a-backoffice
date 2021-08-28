@@ -11,8 +11,10 @@
         </button>
     </div>
 </div>
+
 <complete-table
-[maxPage]="12">
+(onClickFilter)="filterToggleSvc.openFilter()"
+[maxPage]="paginationResult.maxPage">
     <thead>
         <tr>
             <th>
@@ -39,28 +41,28 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let item of data">
             <td>
-                name
+                {{item.username}}
             </td>
             <td>
-                name
+                {{item.firstName}}
             </td>
             <td>
-                name
+                {{item.lastName}}
             </td>
             <td>
-                name
+                {{item.email}}
             </td>
             <td>
-                name
+                {{item.birthDate | date}}
             </td>
             <td>
-                name
+                {{item.group}}
             </td>
             <td>
                 <button class="btn btn-warning me-1"
-                routerLink="/employee/1">
+                routerLink="/employee/{{item.id}}">
                     Edit
                 </button>
                 <button class="btn btn-danger"
@@ -71,3 +73,5 @@
         </tr>
     </tbody>
 </complete-table>
+
+<filter></filter>

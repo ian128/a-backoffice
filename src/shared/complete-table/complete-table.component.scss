@@ -37,7 +37,7 @@
 
     }
     .page-number.selected{
-        color: #0062FF !important;
+        color: $info !important;
     }
 }
 
@@ -49,6 +49,7 @@
 }
 
 .table{
+    margin: 0 !important;
     thead {
         tr{
             th{

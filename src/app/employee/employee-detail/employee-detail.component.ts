@@ -1,7 +1,9 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { fontAwesome } from 'src/const/font-awesome';
+import { EmployeeService } from 'src/services/employee/employee.service';
 
 @Component({
   selector: 'app-employee-detail',
@@ -17,16 +19,31 @@ export class EmployeeDetailComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private employeeSvc: EmployeeService,
+    private toast: HotToastService
   ) { 
     this.flags.selectedID = this.activatedRoute.snapshot.params.id
   }
+
+  data: any = {}
   
   back(){
     this.location.back()
   }
+
   ngOnInit(): void {
-    
+    this.employeeSvc.getEmployeeDetail(this.flags.selectedID)
+    .then((res)=>{
+      console.log(res)
+      this.data = res
+    })
+    .catch(e=>{
+      this.toast.error(e)
+      setTimeout(()=>{
+        this.location.back()
+      },2000)
+    })
   }
 
 }

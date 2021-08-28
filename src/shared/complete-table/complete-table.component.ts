@@ -32,6 +32,7 @@ export class CompleteTableComponent implements OnInit {
   get showTrailingPage(){
     return (this.maxPage - (this.pagination.offset+1) ) > this.pagination.cycle
   }
+  
 
   pagination={
     offset: null,
@@ -98,7 +99,7 @@ export class CompleteTableComponent implements OnInit {
   }
 
   onChangePageLength(){
-    if(this.state.limit <= 0){
+    if(this.state.limit < 1){
       this.state.limit = 1
     }else{
       this.navigate()

@@ -1,0 +1,42 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '../../styles/color.scss';
+
+.filter-wrapper{
+    position: fixed;
+    width: auto;
+    height: 100%;
+    transition: all 0.4s;
+    top:0;
+    background-color: $primary;
+
+    @include media-breakpoint-only(xs){
+        right: -80%;
+        width: 80%;
+    }
+    @include media-breakpoint-only(sm){
+        right: -75%;
+        width: 75%;
+    }
+    @include media-breakpoint-only(md){
+        right: -60%;
+        width: 60%;
+    }
+    @include media-breakpoint-only(lg){
+        right: -45%;
+        width: 45%;
+    }
+    @include media-breakpoint-only(xl){
+        right: -30%;
+        width: 30%;
+    }
+    @include media-breakpoint-only(xxl){
+        right: -25%;
+        width: 25%;
+    }
+    &.open{
+        right: 0vh !important;
+        box-shadow: 0 0 12pt #000000A0;
+    }
+}
