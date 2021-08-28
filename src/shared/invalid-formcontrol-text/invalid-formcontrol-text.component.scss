@@ -1,0 +1,9 @@
+@import '../../styles/color.scss';
+
+.error-msg{
+    color: $danger;
+    font-size: 10pt;
+    font-weight: 600;
+    padding-top: 2pt;
+    padding-bottom: 1pt;
+}
