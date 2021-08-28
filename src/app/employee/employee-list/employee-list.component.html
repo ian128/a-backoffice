@@ -11,7 +11,8 @@
         </button>
     </div>
 </div>
-<complete-table>
+<complete-table
+[maxPage]="12">
     <thead>
         <tr>
             <th>
@@ -58,9 +59,13 @@
                 name
             </td>
             <td>
-                <button class="btn btn-primary"
+                <button class="btn btn-warning me-1"
                 routerLink="/employee/1">
-                    Detail
+                    Edit
+                </button>
+                <button class="btn btn-danger"
+                (click)="deleteEmployee()">
+                    Delete
                 </button>
             </td>
         </tr>

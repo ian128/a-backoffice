@@ -13,7 +13,6 @@ export class EmployeeManageComponent implements OnInit {
   form = new FormGroup({
     username: new FormControl(null,{
       validators: [Validators.required],
-      updateOn: "blur"
     }),
     firstName: new FormControl(null,{
       validators: [Validators.required],

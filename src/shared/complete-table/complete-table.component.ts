@@ -9,25 +9,23 @@ import { fontAwesome } from 'src/const/font-awesome';
   styleUrls: ['./complete-table.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class CompleteTableComponent implements OnInit, OnChanges {
+export class CompleteTableComponent implements OnInit {
   fontAwesome = fontAwesome  
-  @Input() currentPage?: any
-  @Input() maxPage?: any
 
-  @Input() totalItems?: any
-  @Input() numberOfDisplayedItems: any
+  state={
+    page: 1,
+    search: '',
+    limit: 5,
+  }
+  
+  @Input() maxPage?: any
 
   @Input() hideFilter?: boolean
   @Input() hidePagination?: boolean
 
-  @Output('onSearch') onSearch = new EventEmitter()
-  @Output('onPageSelect') onPageSelect = new EventEmitter()
   @Output('onClickFilter') onClickFilter = new EventEmitter()
-  @Output('onChangePageLength') onChangePageLength = new EventEmitter()
 
   delaySearchFn: any
-
-  searchTxt: any
 
   private subscription: Subscription
 
@@ -55,61 +53,67 @@ export class CompleteTableComponent implements OnInit, OnChanges {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) { }
+  ) { 
+    this.subscription=this.router.events.subscribe(res=>{
+      if(res instanceof NavigationEnd){
+        this.fetchStateFromURL()
+      }
+    })
+  }
 
   ngOnDestroy(){
     if(this.subscription) this.subscription.unsubscribe()
   }
 
-  updatePaginationState(){
-    this.currentPage = this.currentPage || 1
-    let n = Math.floor((this.currentPage-1)/this.pagination.cycle*1.00)
+  private fetchStateFromURL(){
+    let qP = this.activatedRoute.snapshot.queryParams
+    this.state.search = qP['search']
+    this.state.limit = qP['limit'] || 5
+
+    this.state.page = qP['page'] || 1
+    let n = Math.floor((this.state.page-1)/this.pagination.cycle*1.00)
     this.pagination.offset = n*this.pagination.cycle
   }
 
-  ngOnChanges(){
-    this.updatePaginationState()
-  }
-
   ngOnInit(): void {
-    let qP = this.activatedRoute.snapshot.queryParams
-    this.searchTxt = qP.search
-    this.numberOfDisplayedItems = qP.limit || 5
-    
-    this.updatePaginationState()
-    this.subscription=this.router.events.subscribe(res=>{
-      if(res instanceof NavigationEnd){
-        this.updatePaginationState()
-      }
-    })
   }
 
   beginSearch(){
     if(this.delaySearchFn) clearTimeout(this.delaySearchFn)
     this.delaySearchFn = setTimeout(()=>{
-      this.onSearch.emit(this.searchTxt)
+      this.navigate()
     },500)
   }
 
-  selectNewPage(newPage){
-    if(newPage == this.currentPage) return
-
-    this.currentPage=newPage
-    this.onPageSelect.emit(newPage)
-
-    this.updatePaginationState()
+  onSelectNewPage(newPage){
+    if(newPage == this.state.page) return
+    else{
+      this.state.page=newPage
+      this.navigate()
+    }
   }
 
   onClickF(){
     this.onClickFilter.emit("1")
   }
 
-  onChangePagelen(event){
-    let va = event.value
-    if(va <= 0){
-      va = 1
-      event.value = va
+  onChangePageLength(){
+    if(this.state.limit <= 0){
+      this.state.limit = 1
+    }else{
+      this.navigate()
     }
-    this.onChangePageLength.emit(va)
   }
+
+  private navigate(){
+    let qP = {...this.state}
+    if(!qP.search) delete qP.search
+    console.log(qP)
+    this.router.navigate([
+      location.pathname
+    ],{
+      queryParams: qP
+    })
+  }
+
 }

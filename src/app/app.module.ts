@@ -19,7 +19,7 @@ import { SharedModule } from 'src/shared/shared.module';
   imports: [
     BrowserModule,
     HotToastModule.forRoot({
-      position: 'top-center',
+      position: 'top-right',
       dismissible: true,
     }),
     AppRoutingModule,

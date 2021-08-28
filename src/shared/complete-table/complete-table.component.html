@@ -2,8 +2,8 @@
     <div class="row d-flex align-items-center mb-1">
         <div class="col">
             <input class="form-control mb-0 search-icon" placeholder="Cari nama.."
-            [(ngModel)]="searchTxt"
-            (keyup)="beginSearch()">
+            [(ngModel)]="state.search"
+            (ngModelChange)="beginSearch()">
         </div>
         <div class="col-auto" *ngIf="!hideFilter">
             <button class="btn text-primary"
@@ -20,9 +20,6 @@
 
     <div class="row d-flex align-items-center" *ngIf="!hidePagination">
         <div class="col">
-            {{ ((currentPage-1)*numberOfDisplayedItems)+1 }}-{{currentPage*numberOfDisplayedItems > totalItems ? totalItems : currentPage*numberOfDisplayedItems}} of {{totalItems}} list
-        </div>
-        <div class="col">
             <div class="pagination d-flex align-items-center justify-content-end">
                 <div class="page-button-control"
                 (click)="pagination.backBatchPage()" [hidden]="!pagination.canBackBatchPage()">
@@ -32,11 +29,11 @@
                 <!-- Show 5 pages per cycle-->
                 <div class="page-number"
                 [ngClass]="{
-                    'selected': currentPage == (i+pagination.offset)+1
+                    'selected': state.page == i+pagination.offset+1
                 }"
                 *ngFor="let x of [].constructor(maxPage) |
                 slice:pagination.offset:pagination.offset+pagination.cycle; let i=index"
-                (click)="selectNewPage(i+pagination.offset+1)">
+                (click)="onSelectNewPage(i+pagination.offset+1)">
                     <div class="num">
                         {{i+pagination.offset+1}}
                     </div>
@@ -48,7 +45,7 @@
                         ...
                     </div>
                     <div class="page-number">
-                        <div class="num" (click)="selectNewPage(maxPage)">
+                        <div class="num" (click)="onSelectNewPage(maxPage)">
                             {{maxPage}}
                         </div>
                     </div>
@@ -60,9 +57,8 @@
                 </div>
                 <div class="mt-2">
                     <input class="form-control"
-                    #paginationinput
-                    [attr.value]="numberOfDisplayedItems"
-                    (change)="onChangePagelen(paginationinput)"
+                    [(ngModel)]="state.limit"
+                    (ngModelChange)="onChangePageLength()"
                     style="width: 42pt;" type="number">
                 </div>
             </div>
