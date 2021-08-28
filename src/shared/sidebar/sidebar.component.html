@@ -1,0 +1,25 @@
+<div class="menu-wrapper"
+[ngClass]="{
+    'open':isSidebarOpened
+}">
+    <div class="menu-content">
+        <div class="row px-2 py-1 d-flex align-items-center">
+            <div class="col-auto">
+                <span style="font-size: 20pt; cursor: pointer;"
+                (click)="close()">
+                    &times;
+                </span>
+            </div>
+            <div class="col">
+                Menu
+            </div>
+        </div>
+        <div class="menus">
+            <div class="menus__menu"
+            routerLink="/employee"
+            routerLinkActive="active">
+                Employee
+            </div>
+        </div>
+    </div>
+</div>

@@ -22,6 +22,7 @@ style="height: 100vh; width: 100vw;">
                     class="form-control"
                     placeholder="Password" aria-label="Password"
                     autocomplete="current-password">
+                    <form-errors [fControl]="form.controls.password"></form-errors>
                 </div>
                 <button class="btn btn-primary w-100">Login</button>
             </form>

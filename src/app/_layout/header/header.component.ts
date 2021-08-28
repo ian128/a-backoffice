@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { SidebarService } from '../../../shared/sidebar/sidebar.component';
 
 @Component({
-  selector: 'app-header',
+  selector: 'header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private sidebarSvc: SidebarService
+  ) { }
 
   ngOnInit(): void {
+    
+  }
+
+  openSidebar(){
+    this.sidebarSvc.openSideBar()
   }
 
 }

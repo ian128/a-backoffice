@@ -1,0 +1,12 @@
+$h: 54pt;
+
+.headerSpacer{
+    height: $h;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    height: $h;
+    width: 100%;
+}
