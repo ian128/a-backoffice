@@ -11,10 +11,10 @@ import { AuthService } from 'src/services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
   form = new FormGroup({
-    email: new FormControl("email@email.com",{
+    email: new FormControl(null,{
       validators: [Validators.required, Validators.email]
     }),
-    password: new FormControl("123123Xx",{
+    password: new FormControl(null,{
       validators: [Validators.required]
     }),
   })
