@@ -62,5 +62,13 @@ export class EmployeeService {
     })
 
   }
+
+  deleteEmployee(id){
+    return new Promise((resolve, reject)=>{
+      setTimeout(()=>{
+        resolve(true)
+      },300)
+    })
+  }
   
 }

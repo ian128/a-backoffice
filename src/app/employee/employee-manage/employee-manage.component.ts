@@ -1,4 +1,4 @@
-import { Location } from '@angular/common';
+import { DatePipe, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -9,7 +9,10 @@ import { EmployeeService } from 'src/services/employee/employee.service';
 @Component({
   selector: 'app-employee-manage',
   templateUrl: './employee-manage.component.html',
-  styleUrls: ['./employee-manage.component.scss']
+  styleUrls: ['./employee-manage.component.scss'],
+  providers:[
+    DatePipe
+  ]
 })
 export class EmployeeManageComponent implements OnInit {
   form = new FormGroup({
@@ -48,11 +51,14 @@ export class EmployeeManageComponent implements OnInit {
     selectedID: null
   }
 
+  today = this.datePipe.transform(new Date(),'YYYY-LL-dd')
+
   constructor(
     private toast: HotToastService,
     private location: Location,
     private activatedRoute: ActivatedRoute,
     private employeeSvc: EmployeeService,
+    private datePipe: DatePipe
   ) { 
     this.flags.selectedID = this.activatedRoute.snapshot.params.id
   }
@@ -80,8 +86,10 @@ export class EmployeeManageComponent implements OnInit {
       this.form.markAllAsTouched()
       this.toast.error("Tidak dapat menyimpan data. Mohon periksa kembali isian form anda")
     }else{
-      this.toast.success("Terima kasih. Data anda telah disimpan")
+      this.toast.loading("Menyimpan...")
       setTimeout(()=>{
+        this.toast.close()
+        this.toast.success("Terima kasih. Data anda telah disimpan")
         this.location.back()
       },1000)
     }

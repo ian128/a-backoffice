@@ -70,7 +70,7 @@
                     Edit
                 </button>
                 <button class="btn btn-danger"
-                (click)="deleteEmployee()">
+                (click)="deleteEmployee(item.id)">
                     Delete
                 </button>
             </td>
@@ -115,7 +115,7 @@
                 </button>
             </div>
             <div class="col">
-                <button class="btn btn-outline-danger w-100"
+                <button class="btn btn-outline-danger bg-white w-100"
                 (click)="resetFilter()">
                     Reset
                 </button>

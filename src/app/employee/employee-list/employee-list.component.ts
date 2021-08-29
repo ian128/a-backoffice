@@ -72,6 +72,8 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
       console.log(res)
       this.data = res['data']
       this.paginationResult = res['pagination']
+
+      if(this.data.length == 0) this.toast.info("Tidak ada hasil")
     })
   }
   
@@ -102,10 +104,14 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
     })
   }
 
-  deleteEmployee(){
+  deleteEmployee(id){
     let x = confirm("Hapus data employee ini?")
     if(x){
-
+      this.employeeSvc.deleteEmployee(id)
+      .then(res=>{
+        this.toast.success("Data employee telah dihapus")
+        this.APICall()
+      })
     }else{
       this.toast.info("Hapus data employee dibatalkan")
     }

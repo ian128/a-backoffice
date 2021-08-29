@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { fontAwesome } from 'src/const/font-awesome';
+import { Status } from 'src/const/group.option';
 import { EmployeeService } from 'src/services/employee/employee.service';
 
 @Component({
@@ -32,6 +33,13 @@ export class EmployeeDetailComponent implements OnInit {
     this.location.back()
   }
 
+  get statusTranslate(){
+    try{
+      return Status.find((item) => item.id == this.data.status).name
+    }catch(e){
+      return ''
+    }
+  }
   ngOnInit(): void {
     this.employeeSvc.getEmployeeDetail(this.flags.selectedID)
     .then((res)=>{

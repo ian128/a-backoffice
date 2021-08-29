@@ -1,3 +1,5 @@
+@import '../../../styles/color.scss';
+
 $h: 48pt;
 
 .headerSpacer{
@@ -9,6 +11,9 @@ $h: 48pt;
     top: 0;
     height: $h;
     width: 100%;
-    background-color: white;
+    background-color: $info;
     box-shadow: 0 0 12pt #000000A0;
+    *{
+        color: white;
+    }
 }
