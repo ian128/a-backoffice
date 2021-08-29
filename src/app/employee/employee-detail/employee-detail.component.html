@@ -1,10 +1,5 @@
 
 <div class="row d-flex align-items-center mb-2">
-    <div class="col-auto">
-        <button class="btn" (click)="back()">
-            <fa-icon [icon]="fontAwesome.back"></fa-icon>
-        </button>
-    </div>
     <div class="col">
         <h4 class="mb-0">
             Employee Detail
@@ -12,7 +7,7 @@
     </div>
 </div>
 
-<form>
+<div>
     <div class="row">
         <div class="col-12 col-sm-12 col-md-6 col-lg-5">
             <div class="form-group">
@@ -111,4 +106,9 @@
             </div>
         </div>
     </div>
-</form>
+    <div>
+        <button class="btn btn-primary" (click)="back()">
+           Ok
+        </button>
+    </div>
+</div>

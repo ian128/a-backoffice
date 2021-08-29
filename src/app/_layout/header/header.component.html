@@ -1,7 +1,7 @@
 <div class="headerSpacer"></div>
 <div class="header">
     <div class="row px-2 py-1 d-flex align-items-center">
-        <div class="col-auto">
+        <div class="col-auto" *ngIf="isLoggedIn">
             <button class="btn"
             (click)="openSidebar()">
                 <fa-icon [icon]="fontAwesome.menu"></fa-icon>
@@ -12,8 +12,8 @@
                 Backoffice
             </span>
         </div>
-        <div class="col-auto">
-            <button class="btn">
+        <div class="col-auto" *ngIf="isLoggedIn">
+            <button class="btn" (click)="logout()">
                 <span class="me-1">Logout</span> <fa-icon [icon]="fontAwesome.logout"></fa-icon>
             </button>
         </div>

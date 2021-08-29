@@ -75,7 +75,7 @@
                 <label>
                     Basic Salary
                 </label>
-                <input class="form-control"
+                <input type="number" class="form-control"
                 formControlName="basicSalary"/>
                 <form-errors [fControl]="form.controls.basicSalary"></form-errors>
             </div>
@@ -87,8 +87,14 @@
                 <label>
                     Status
                 </label>
-                <input class="form-control"
-                formControlName="status"/>
+                <select class="form-control"
+                formControlName="status">
+                    <option [value]="null" disabled>Pilih..</option>
+                    <option *ngFor="let item of StatusOption"
+                    [value]="item.id">
+                        {{item.name}}
+                    </option>
+                </select>
                 <form-errors [fControl]="form.controls.status"></form-errors>
             </div>
         </div>

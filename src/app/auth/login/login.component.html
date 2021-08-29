@@ -1,5 +1,5 @@
 <div class="d-flex flex-column"
-style="height: 100vh; width: 100vw;">
+style="height: 100%; width: 100vw;">
     <div class="container m-auto">
         <div class="card p-1 p-md-3">
             <h4>
@@ -24,7 +24,9 @@ style="height: 100vh; width: 100vw;">
                     autocomplete="current-password">
                     <form-errors [fControl]="form.controls.password"></form-errors>
                 </div>
-                <button class="btn btn-primary w-100">Login</button>
+                <button class="btn btn-primary w-100"
+                (click)="proceedLogin()"
+                [disabled]="!form.valid">Login</button>
             </form>
         </div>
     </div>

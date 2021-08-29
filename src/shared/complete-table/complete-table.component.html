@@ -6,6 +6,11 @@
             (ngModelChange)="beginSearch()">
         </div>
         <div class="col-auto" *ngIf="!hideFilter">
+            <button class="btn btn-danger"
+            (click)="clearSearch()"
+            *ngIf="state.search">
+                Reset
+            </button>
             <button class="btn text-primary"
             (click)="onClickF()">
                 <fa-icon [icon]="fontAwesome.filter"></fa-icon>

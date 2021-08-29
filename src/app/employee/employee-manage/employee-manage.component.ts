@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
-import { Groups } from 'src/const/group.option';
+import { Groups, Status } from 'src/const/group.option';
 import { EmployeeService } from 'src/services/employee/employee.service';
 
 @Component({
@@ -42,6 +42,7 @@ export class EmployeeManageComponent implements OnInit {
     }),
   })
   
+  StatusOption = Status
   GroupOption = Groups
   flags={
     selectedID: null
@@ -78,6 +79,11 @@ export class EmployeeManageComponent implements OnInit {
     if(!this.form.valid){
       this.form.markAllAsTouched()
       this.toast.error("Tidak dapat menyimpan data. Mohon periksa kembali isian form anda")
+    }else{
+      this.toast.success("Terima kasih. Data anda telah disimpan")
+      setTimeout(()=>{
+        this.location.back()
+      },1000)
     }
   }
 

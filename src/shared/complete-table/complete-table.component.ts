@@ -32,7 +32,6 @@ export class CompleteTableComponent implements OnInit {
   get showTrailingPage(){
     return (this.maxPage - (this.pagination.offset+1) ) > this.pagination.cycle
   }
-  
 
   pagination={
     offset: null,
@@ -79,6 +78,10 @@ export class CompleteTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  clearSearch(){
+    this.state.search=null
+    this.beginSearch()
+  }
   beginSearch(){
     if(this.delaySearchFn) clearTimeout(this.delaySearchFn)
     this.delaySearchFn = setTimeout(()=>{
@@ -107,7 +110,7 @@ export class CompleteTableComponent implements OnInit {
   }
 
   private navigate(){
-    let qP = {...this.state}
+    let qP = {...this.activatedRoute.snapshot.queryParams, ...this.state}
     if(!qP.search) delete qP.search
     console.log(qP)
     this.router.navigate([

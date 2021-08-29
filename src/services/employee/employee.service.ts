@@ -8,11 +8,32 @@ export class EmployeeService {
   static data = EmployeeSample
   constructor() { }
   
-  getEmployees({page = 1, sort, limit = 5}){
+  getEmployees({page = 1, search, limit = 5,
+    group, startBirthDate, endBirthDate}){
 
     let result = EmployeeService.data
+    if(search){
+      result = result.filter((item)=>{
+        return [item.firstName,item.lastName].join(' ').toLowerCase().includes(search.toLowerCase())
+      })
+    }
+    if(group){
+      result = result.filter((item)=>{
+        return item.group == group
+      })
+    }
+    if(startBirthDate){
+      result = result.filter((item)=>{
+        return new Date(startBirthDate).getTime() <= new Date(item.birthDate).getTime()
+      })
+    }
+    if(endBirthDate){
+      result = result.filter((item)=>{
+        return new Date(item.birthDate).getTime() <= new Date(endBirthDate).getTime()
+      })
+    }
     let paginatedResult =  result.slice((page-1)*limit, (page)*limit)
-    
+
     return new Promise((resolve, reject)=>{
       setTimeout(()=>{
         resolve({

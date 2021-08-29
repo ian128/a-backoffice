@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Subscription } from 'rxjs';
+import { Groups } from 'src/const/group.option';
 import { EmployeeService } from 'src/services/employee/employee.service';
 import { FilterToggleService } from 'src/shared/filter/filter.component';
 
@@ -11,12 +13,23 @@ import { FilterToggleService } from 'src/shared/filter/filter.component';
   styleUrls: ['./employee-list.component.scss']
 })
 export class EmployeeListComponent implements OnInit, OnDestroy {
+  options={
+    group: Groups
+  }
 
   state={
     page: 1, 
     sort:'', 
-    limit: 5
+    limit: 5,
+    search: '',
+    group: null,
+    startBirthDate: null,
+    endBirthDate: null,
   }
+
+  filterForm = new FormGroup({
+    group: new FormControl()
+  })
 
   constructor(
     private toast: HotToastService,
@@ -37,8 +50,8 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
   
   data: any = []
   paginationResult: any = {
-    count: 100,
-    currentPage: "9",
+    count: null,
+    currentPage: null,
     limit: "5",
     maxPage: null
   }
@@ -46,8 +59,12 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
   fetchState(){
     let qP = this.activatedRoute.snapshot.queryParams
     this.state.page = qP['page']
+    this.state.search = qP['search']
     this.state.sort = qP['sort']
     this.state.limit = qP['limit']
+    this.state.group = qP['group']
+    this.state.startBirthDate = qP['startBirthDate']
+    this.state.endBirthDate = qP['endBirthDate']
   }
 
   APICall(){
@@ -64,6 +81,25 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
+  }
+
+  resetFilter(){
+    this.state.group = null
+    this.state.startBirthDate = null
+    this.state.endBirthDate = null
+  }
+
+  onChangeFilter(){
+    let qP = {...this.state}
+    if(!qP['sort']) delete qP.sort
+    if(!qP['search']) delete qP.search
+    if(!qP['group']) delete qP.group
+    if(!qP['startBirthDate']) delete qP.startBirthDate
+    if(!qP['endBirthDate']) delete qP.endBirthDate
+    qP.page = 1
+    this.router.navigate([location.pathname],{
+      queryParams: qP
+    })
   }
 
   deleteEmployee(){

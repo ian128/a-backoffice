@@ -61,6 +61,10 @@
                 {{item.group}}
             </td>
             <td>
+                <button class="btn btn-secondary me-1"
+                routerLink="/employee/{{item.id}}">
+                    Detail
+                </button>
                 <button class="btn btn-warning me-1"
                 routerLink="/employee/{{item.id}}/edit">
                     Edit
@@ -74,4 +78,48 @@
     </tbody>
 </complete-table>
 
-<filter></filter>
+<filter>
+    <div>
+        <div class="form-group">
+            <label class="text-white">Group</label>
+            <select class="form-control"
+            [(ngModel)]="state.group">
+                <option [value]="null">Pilih..</option>
+                <option *ngFor="let item of options.group">
+                    {{item.name}}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="text-white">Range Tanggal Lahir</label>
+            <div class="row">
+                <div class="col">
+                    <label class="text-white">Mulai</label>
+                    <input class="form-control" type="date"
+                    [(ngModel)]="state.startBirthDate">
+                </div>
+                <div class="col">
+                    <label class="text-white">Akhir</label>
+                    <input class="form-control" type="date"
+                    [min]="state.startBirthDate"
+                    [(ngModel)]="state.endBirthDate">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary w-100"
+                (click)="onChangeFilter()">
+                    Terapkan
+                </button>
+            </div>
+            <div class="col">
+                <button class="btn btn-outline-danger w-100"
+                (click)="resetFilter()">
+                    Reset
+                </button>
+            </div>
+        </div>
+    </div>
+</filter>
