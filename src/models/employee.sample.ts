@@ -116,7 +116,7 @@ export const EmployeeSample=[
         "basicSalary": 502351747,
         "status": "1",
         "group": "B3",
-        "description": "Praesent eu dui. Cum sociis natoque penatibus et magnis dis",
+        "description": "Praesent eu dui. A sociis natoque penatibus et magnis dis",
         "id": 1630160316063
     },
     {
@@ -267,7 +267,7 @@ export const EmployeeSample=[
         "username": "WQS83HVJ2CK",
         "firstName": "Dalton",
         "lastName": "Alexis",
-        "email": "sem@euarcuMorbi.co.uk",
+        "email": "sem@euarcumorbi.co.uk",
         "birthDate": "1958-02-21",
         "basicSalary": 867068195,
         "status": "5",
@@ -351,7 +351,7 @@ export const EmployeeSample=[
         "username": "SFF64WLS8BO",
         "firstName": "Kibo",
         "lastName": "Rebecca",
-        "email": "Morbi.metus.Vivamus@sedpedeCum.ca",
+        "email": "Morbi.metus.Vivamus@sedpede.ca",
         "birthDate": "1949-03-24",
         "basicSalary": 953569618,
         "status": "6",
@@ -536,7 +536,7 @@ export const EmployeeSample=[
         "basicSalary": 173485752,
         "status": "6",
         "group": "A1",
-        "description": "enim, gravida sit amet, dapibus id, blandit at, nisi. Cum",
+        "description": "enim, gravida sit amet, dapibus id, blandit at, nisi",
         "id": 1630160316063
     },
     {
@@ -747,7 +747,7 @@ export const EmployeeSample=[
         "username": "GHR17DNM6JW",
         "firstName": "Eagan",
         "lastName": "Chastity",
-        "email": "Nam.nulla.magna@Cum.org",
+        "email": "Nam.nulla.magna@aaa.org",
         "birthDate": "1935-05-01",
         "basicSalary": 397761492,
         "status": "5",
