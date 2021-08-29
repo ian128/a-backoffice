@@ -8,6 +8,7 @@ import { InvalidFormcontrolTextComponent } from "./invalid-formcontrol-text/inva
 import { CompleteTableComponent } from "./complete-table/complete-table.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { FilterComponent } from "./filter/filter.component";
+import { SortColumnComponent } from "./sort-column/sort-column.component";
 registerLocaleData(localeId, 'id');
 
 const core=[
@@ -22,7 +23,8 @@ const core=[
 const frequentlyUsedComponent=[
   InvalidFormcontrolTextComponent,
   CompleteTableComponent,
-  FilterComponent
+  FilterComponent,
+  SortColumnComponent
 ]
 
 @NgModule({

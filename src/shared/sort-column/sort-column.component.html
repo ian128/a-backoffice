@@ -1,0 +1,8 @@
+<div className="cursor-pointer mx-2" style="display: 'inline-block'">
+    <img src="assets/sort-inactive.svg" height="20" width="20" *ngIf="sortState === null"
+    (click)="switchMode('asc')">
+    <img src="assets/sort-asc.svg" height="20" width="20" *ngIf="sortState === 'asc'"
+    (click)="switchMode('desc')">
+    <img src="assets/sort-desc.svg" height="20" width="20" *ngIf="sortState === 'desc'"
+    (click)="switchMode(null)">
+</div>

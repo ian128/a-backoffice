@@ -9,7 +9,8 @@ export class EmployeeService {
   constructor() { }
   
   getEmployees({page = 1, search, limit = 5,
-    group, startBirthDate, endBirthDate}){
+    group, startBirthDate, endBirthDate,
+    sortBy, sort}){
 
     let result = EmployeeService.data
     if(search){
@@ -32,6 +33,31 @@ export class EmployeeService {
         return new Date(item.birthDate).getTime() <= new Date(endBirthDate).getTime()
       })
     }
+
+    if(sortBy && sort){
+      console.log("sort run!")
+      try{
+        result = result.sort((a,b)=>{
+          if(sortBy == 'birthDate'){
+            if(sort =='asc'){
+              return new Date(a['birthDate']).getTime() - new Date(b['birthDate']).getTime()
+            }else{
+              return new Date(b['birthDate']).getTime() - new Date(a['birthDate']).getTime()
+            }
+          }else{
+            let varA =a[sortBy].toLowerCase(), varB = b[sortBy].toLowerCase()
+            if(sort =='asc'){
+              return varA < varB ? -1 : varA > varB ? 1 : 0
+            }else{
+              return varA < varB ? 1 : varA > varB ? -1 : 0
+            }
+          }
+        })
+      }catch(e){
+        console.warn("Unknown sort column, skipping sort..")
+      }
+    }
+
     let paginatedResult =  result.slice((page-1)*limit, (page)*limit)
 
     return new Promise((resolve, reject)=>{

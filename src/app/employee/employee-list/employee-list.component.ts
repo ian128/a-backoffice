@@ -19,7 +19,8 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
 
   state={
     page: 1, 
-    sort:'', 
+    sortBy: null,
+    sort: null,
     limit: 5,
     search: '',
     group: null,
@@ -60,6 +61,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
     let qP = this.activatedRoute.snapshot.queryParams
     this.state.page = qP['page']
     this.state.search = qP['search']
+    this.state.sortBy = qP['sortBy']
     this.state.sort = qP['sort']
     this.state.limit = qP['limit']
     this.state.group = qP['group']
@@ -98,6 +100,8 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
     if(!qP['group']) delete qP.group
     if(!qP['startBirthDate']) delete qP.startBirthDate
     if(!qP['endBirthDate']) delete qP.endBirthDate
+    if(!qP['sortBy']) delete qP.sortBy
+    if(!qP['sort']) delete qP.sort
     qP.page = 1
     this.router.navigate([location.pathname],{
       queryParams: qP
