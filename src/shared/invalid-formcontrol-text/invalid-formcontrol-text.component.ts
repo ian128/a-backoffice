@@ -12,9 +12,9 @@ export class InvalidFormcontrolTextComponent implements OnInit, OnDestroy {
   formMsg: any={
     'required': "Kolom ini diperlukan",
     'requiredTrue': "Anda harus menyetujui",
-    'negative': "Angka tidak boleh negatif",
+    'cantBeNegative': "Angka tidak boleh negatif",
     'email': "Format alamat email belum benar",
-    'wrong_ktp': "KTP harus 16 digit",
+    'wrong_ktp': "KTP harus 16 digit"
   }
 
   constructor(

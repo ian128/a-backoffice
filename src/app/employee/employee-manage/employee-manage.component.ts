@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Groups, Status } from 'src/const/group.option';
+import { FormValidators } from 'src/functions/FormValidators';
 import { EmployeeService } from 'src/services/employee/employee.service';
 
 @Component({
@@ -32,7 +33,7 @@ export class EmployeeManageComponent implements OnInit {
       validators: [Validators.required],
     }),
     basicSalary: new FormControl(null,{
-      validators: [Validators.required],
+      validators: [Validators.required, FormValidators.cantBeNegative],
     }),
     status: new FormControl(null,{
       validators: [Validators.required],
