@@ -31,4 +31,12 @@ $spacer: 3rem;
     @extend .is-invalid;
 }
 
+select{
+    background: url('/assets/icon/select-icon.svg') no-repeat right #ddd;
+	-moz-appearance: none; 
+	-webkit-appearance: none; 
+	appearance: none;
+    padding-right: 20pt !important;
+}
+
 @import "node_modules/bootstrap/scss/bootstrap";
